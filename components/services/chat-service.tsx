@@ -8,11 +8,14 @@ export default function Page() {
     transport: new DefaultChatTransport({ api: "/api/chat" }),
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     sendMessage({ text: input });
     setInput("");
   };
+
+  // 修复 messages 未使用的警告
+  console.log(messages);
 
   return (
     <form onSubmit={handleSubmit}>

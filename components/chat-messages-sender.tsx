@@ -1,11 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Status,
-  StatusIndicator,
-  StatusLabel,
-} from "@/components/ui/kibo-ui/status";
+import { Badge } from "@/components/ui/badge";
 import {
   PromptInput,
   PromptInputAction,
@@ -13,7 +9,7 @@ import {
   PromptInputTextarea,
 } from "@/components/ui/prompt-input";
 import { useAgentStore } from "@/stores/agent-store";
-import { ArrowUp, Square } from "lucide-react";
+import { ArrowUp, Square, Circle } from "lucide-react";
 import { useState } from "react";
 
 export default function ChatMessagesSender({
@@ -48,10 +44,12 @@ export default function ChatMessagesSender({
       <PromptInputActions className="flex pt-2 justify-between">
         <div className="flex items-center gap-2">
           <PromptInputAction tooltip="Active agent">
-            <Status status="online">
-              <StatusIndicator />
-              <StatusLabel>{agent.name}</StatusLabel>
-            </Status>
+            <div className="flex items-center gap-2">
+              <Circle className="w-2 h-2 text-green-500" fill="currentColor" />
+              <Badge variant="secondary" className="text-xs">
+                {agent.name}
+              </Badge>
+            </div>
           </PromptInputAction>
         </div>
 
